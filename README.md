@@ -56,6 +56,8 @@ Lines to be supported:
 * author:   information about the author
 * copyright:   who owns the copyright, in case of paid sentence packs or texts
 
+(amount of sentences for integrity check?)
+
 Example:
 ```
 description.txt
