@@ -4,12 +4,19 @@
 
 Gavel is a free and open-source program for practicing foreign language through sentence training.
 
-## Features
+## Implemented features
+
+* loads sentences into memory
+* allows the user to listen and transcribe sentences
+
+## Planned features
 
 Gavel has *activities* that can be organized into *regimes*.
 An activity is for example transcription.
 A regime consists of activities that can be hierarchically organized, such that once a sentence is transcribed, it is available for the next activity.
 Support is planned for whole texts, so once all the sentences for a text have gone through the regime the fulltext becomes available to the learner.
+The program will also track the user's progress per language and activity, and display that.
+For example "You have transcribed 265 French sentences."
 
 Gavel comes with one regime of three activities by default:
 
@@ -18,14 +25,22 @@ Gavel comes with one regime of three activities by default:
 3. translation
 
 Transcription allows the user to loop a sentence indefinitely while transcribing on a separate medium, preferably a notebook.
-The user can then reveal the correct transcription, and decide 
+The user can then reveal the correct transcription, and if the user managed to transcribe the sentence, they can move that sentence forward in the regime.
+If it was too difficult, the user can return the sentence back to the group of sentences awaiting transcription.
+
+Chorus training also allows the user to loop the sentence indefinitely.
+The user will be instructed to try to pronounce the sentence simultaneously with the recording.
+
+Translation shows the user the sentence in translation (line 2 from the .txt), and prompts the user to translate it in a manner they see fit.
+They can for example say the sentence out loud in the target language as fast as they can (forced recall), translate it by hand on a notebook or type it in a text field in the program.
+The user's translation will then be displayed next to the correct one, and the user is prompted for failure (returns the sentence back to the "to be translated" pile) or success, which marks the sentence as complete.
 
 ## Format
 
 The sentence format is \*.mp3 and \.txt.
-In the text file, the first line is the transcript and the second like is its translation and all notes that might be necessary.
+In the text file, the first line is the transcript and the second line is its translation and all notes that might be necessary.
 
-For example
+For example:
 ```
 tennis.mp3 "Mon frère et moi sommes des bons joueurs de tennis."
 tennis.txt
@@ -44,8 +59,8 @@ Lines to be supported:
 Example:
 ```
 description.txt
-type=text
-description="A short conversation at the doctor's office"
-author="The Defense Language Institute"
-copyright="Public Domain"
+  type=text
+  description="A short conversation at the doctor's office"
+  author="The Defense Language Institute"
+  copyright="Public Domain"
 ```
