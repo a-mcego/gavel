@@ -37,8 +37,10 @@ The user's translation will then be displayed next to the correct one, and the u
 
 ## Format
 
-The sentence format is \*.mp3 and \.txt.
-There are several tags that can be used in the text file;
+A pack of sentences always comes in a folder with audio files and *sentences.txt*.
+Each sentence is declared with a line that says 'line'.
+
+The tags that *sentences.txt* contains;
 
 * audio, tells the audio path or timestamps in a long file
 * target, transcription of the audio
@@ -47,40 +49,44 @@ There are several tags that can be used in the text file;
 * gloss, a morphological analysis
 * tag, for arbitrary tagging
 
-For example:
+A sentence needs audio, target and source, otherwise the sentence will fail to load.
+
+Example:
 ```
-tennis.mp3 "Mon frère et moi sommes des bons joueurs de tennis."
-tennis.txt
-  Mon frère et moi sommes des bons joueurs de tennis.
-  My brother and I are good tennis players.
+tennis.mp3
+sentences.txt
+  line
+  audio tennis.mp3 0:00 2:32
+  target Mon frère et moi sommes des bons joueurs de tennis.
+  source My brother and I are good tennis players.
+  line
+  audio tennis.mp3 2:32 3:90
+  target Mon frère il s'appelle Jacques.
+  source My brother's name is Jacques.
+  gloss 1sg-poss.m.sg HE 3refl-CALL.3sg-pres-ind JACQUES
+  tag reflexive
 ```
 
-A text doesn't have to be split into individual sentence files.
-In this case, sentence boundaries and text are defined as follows:
-```
-tedtalk.mp3
-tedtalk.txt
-  @line 0.0 1.86
-  bonjour et bienvenus à mon TED talk
-  good day and welcome to my TED talk
-```
+The folder also contains *description.txt* where metadata is stored:
 
-Sentences come in folder.
-A folder contains *description.txt* where metadata can be stored.
-Lines to be supported:
-
-* type:  either sentences or text, if type=text, the sentences as a group will be treated as a text that will become available in the user's "text library" once all the sentences have gone through the regime
-* description:   free form text between quotes "" which acts as a short description that will be shown to the user what the text is about, or what the sentence pack is supposed to do, for example "Russian verbs of motion training"
-* author:   information about the author
-* copyright:   who owns the copyright, in case of paid sentence packs or texts
-
-(amount of sentences for integrity check?)
+* type, either sentences or text, if type=text, the sentences as a group will be treated as a text that will become available in the user's 'text library' once all the sentences have gone through the regime
+* title, the title of the text or sentence pack
+* target, the ISO 639-3 code for the target language (https://en.wikipedia.org/wiki/ISO_639-3)
+* source, the ISO 639-3 code for the source language
+* description, free form text which acts as a short description that will be shown to the user what the text is about, or what the sentence pack is supposed to do, for example 'Russian verbs of motion training'
+* author, information about the author
+* copyright, copyright license
+* tag, for arbitrary tagging
 
 Example:
 ```
 description.txt
-  type=text
-  description="A short conversation at the doctor's office"
-  author="The Defense Language Institute"
-  copyright="Public Domain"
+  type text
+  title At the doctor's office
+  target fra
+  source eng
+  description A short conversation at the doctor's office
+  author The Defense Language Institute (DLI)
+  copyright Public Domain
+  tag dialogue
 ```
