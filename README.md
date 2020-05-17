@@ -3,6 +3,7 @@
 ## What is it?
 
 Gavel is a free and open-source program for practicing foreign language through sentence training.
+Through the tagging feature it can also be used for linguistic research.
 
 ## Implemented features
 
@@ -59,6 +60,7 @@ sentences.txt
   audio tennis.mp3 0:00 2:32
   target Mon frère et moi sommes des bons joueurs de tennis.
   source My brother and I are good tennis players.
+  tag tense-present speaker-male mood-indicative
   line
   audio tennis.mp3 2:32 3:90
   target Mon frère il s'appelle Jacques.
