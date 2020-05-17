@@ -4,3 +4,4 @@
 * implement text input for translation
 * implement support for defined *splits* in long audio files to avoid the need to recompress audio
 * search and list sentences by tag
+* implement converting ISO 639 language tags into the language's English name
