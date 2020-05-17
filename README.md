@@ -38,7 +38,14 @@ The user's translation will then be displayed next to the correct one, and the u
 ## Format
 
 The sentence format is \*.mp3 and \.txt.
-In the text file, the first line is the transcript and the second line is its translation and all notes that might be necessary.
+There are several tags that can be used in the text file;
+
+* audio, tells the audio path or timestamps in a long file
+* target, transcription of the audio
+* source, translation of the audio
+* ipa, a transcript of the audio in the International Phonetic Alphabet (e.g. /bɔ̃.ʒuʁ/)
+* gloss, a morphological analysis
+* tag, for arbitrary tagging
 
 For example:
 ```
@@ -47,6 +54,17 @@ tennis.txt
   Mon frère et moi sommes des bons joueurs de tennis.
   My brother and I are good tennis players.
 ```
+
+A text doesn't have to be split into individual sentence files.
+In this case, sentence boundaries and text are defined as follows:
+```
+tedtalk.mp3
+tedtalk.txt
+  @line 0.0 1.86
+  bonjour et bienvenus à mon TED talk
+  good day and welcome to my TED talk
+```
+
 Sentences come in folder.
 A folder contains *description.txt* where metadata can be stored.
 Lines to be supported:
