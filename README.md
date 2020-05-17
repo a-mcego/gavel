@@ -8,7 +8,7 @@ Through the tagging feature it can also be used for linguistic research.
 ## Implemented features
 
 * loads sentences into memory
-* allows the user to listen and transcribe sentences
+* activities: transcription, listening to whole text
 
 ## Planned features
 
