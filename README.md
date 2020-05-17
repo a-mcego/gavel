@@ -13,11 +13,11 @@ Through the tagging feature it can also be used for linguistic research.
 ## Planned features
 
 Gavel has *activities* that can be organized into *regimes*.
-An activity is for example transcription.
+An activity is for example transcription or translation.
 A regime consists of activities that can be hierarchically organized, such that once a sentence is transcribed, it is available for the next activity.
 Support is planned for whole texts, so once all the sentences for a text have gone through the regime the fulltext becomes available to the learner.
 The program will also track the user's progress per language and activity, and display that.
-For example "You have transcribed 265 French sentences."
+For example 'You have transcribed 265 French sentences.'
 
 Gavel comes with one regime of three activities by default:
 
@@ -31,10 +31,11 @@ If it was too difficult, the user can return the sentence back to the group of s
 
 Chorus training also allows the user to loop the sentence indefinitely.
 The user will be instructed to try to pronounce the sentence simultaneously with the recording.
+The program stores information on the amount of chorus repetitions the user has done.
 
-Translation shows the user the sentence in translation (line 2 from the .txt), and prompts the user to translate it in a manner they see fit.
+Translation shows the user the sentence in translation (source), and prompts the user to translate it in a manner they see fit.
 They can for example say the sentence out loud in the target language as fast as they can (forced recall), translate it by hand on a notebook or type it in a text field in the program.
-The user's translation will then be displayed next to the correct one, and the user is prompted for failure (returns the sentence back to the "to be translated" pile) or success, which marks the sentence as complete.
+If the user typed the translation into Gavel, their text will then be displayed next to the correct one, and the user is prompted for failure (returns the sentence back to the 'to be translated' pile) or success, which pushes the sentence into the next step in the regime.
 
 ## Format
 
