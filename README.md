@@ -39,7 +39,7 @@ The user's translation will then be displayed next to the correct one, and the u
 ## Format
 
 A pack of sentences always comes in a folder with audio files and *sentences.txt*.
-Each sentence is declared with a line that says 'line'.
+Each sentence is declared with a line that says 'sentence' (simple enough).
 
 The tags that *sentences.txt* contains;
 
@@ -56,17 +56,17 @@ Example:
 ```
 tennis.mp3
 sentences.txt
-  line
+  sentence
   audio tennis.mp3 0:00 2:32
   target Mon frère et moi sommes des bons joueurs de tennis.
   source My brother and I are good tennis players.
-  tag tense-present speaker-male mood-indicative
-  line
+  tag tense=present speaker=male mood=indicative
+  sentence
   audio tennis.mp3 2:32 3:90
   target Mon frère il s'appelle Jacques.
   source My brother's name is Jacques.
   gloss 1sg-poss.m.sg HE 3refl-CALL.3sg-pres-ind JACQUES
-  tag reflexive
+  tag verb=reflexive
 ```
 
 The folder also contains *description.txt* where metadata is stored:
