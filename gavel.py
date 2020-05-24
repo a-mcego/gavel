@@ -1,36 +1,62 @@
 import os
+import iso639 # type: ignore
+from typing import List, Set, Dict, Tuple, Optional
+import tkinter as tk
+import tkinter.font as tkf # type: ignore
+from functools import partial
 
 #gavel specific stuff
 import activities
 import texts
 import audio
+import settings
+import views
 
-def make_choice(arr, text, question):
-    arr_with_id = list(zip(range(0,len(arr)),[a.description for a in arr]))
-    while True:
-        print("-------------------------")
-        print(text)
-        [print(f"{elem[0]}: {elem[1]}") for elem in arr_with_id]
-        try:
-            chosen_id = int(input(question))
-        except ValueError:
-            print("Please give a number.")
-            continue
-        if chosen_id < 0 or chosen_id >= len(arr):
-            print("Please give a valid number.")
-            continue
-        print("-------------------------")
-        return chosen_id
+if not os.path.exists(settings.PACK_PATH):
+    os.mkdir(settings.PACK_PATH)
+if not os.path.exists(settings.USER_PATH):
+    os.mkdir(settings.USER_PATH)
 
-PACK_PATH = "packs"
-texts = [texts.Text(os.path.join(PACK_PATH,f)) for f in os.listdir(PACK_PATH) if not os.path.isfile(os.path.join(PACK_PATH, f))]
+class Application(tk.Frame):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.pack()
+        self.font = tkf.Font(size=30)
+        self.master = master
+        self.gui_elements = []
 
-chosen_text_id = make_choice(texts, "Texts found:", "Choose text number: ")
-print(f"Chose {chosen_text_id}: {texts[chosen_text_id].description}")
+        self.current_view = None
+        self.change_view(views.TextView)
 
-chosen_activity_id = make_choice(activities.all_activities, "Activities:", "Choose activity: ")
-activity = activities.all_activities[chosen_activity_id]
-print(f"Chose activity '{activity.description}'.")
+    def change_view(self, new_view):
+        assert(issubclass(new_view, views.GavelView))
 
-while True:
-    activity.do_activity(texts[chosen_text_id])
+        for elem in self.gui_elements:
+            elem.destroy()
+        self.current_view = new_view
+        self.gui_elements = new_view().get(self, self.font)
+
+        self.quit = tk.Button(self, text="QUIT", fg="red", command=self.do_quit, font=self.font)
+        self.quit.pack(side="bottom")
+        self.gui_elements.append(self.quit)
+                        
+
+    def choose_text(self, text):
+        self.current_text = text
+        print(f"playing text: {text.description.title}")
+        self.change_view(views.ActivityView)
+
+    def choose_activity(self, act):
+        self.current_act = act(self.current_text)
+        print(f"doing activity: {act.__name__}")
+        self.change_view(self.current_act.View)
+
+    def do_quit(self):
+        self.master.destroy()
+        audio.stop()
+
+root = tk.Tk()
+root.title('Gavel')
+app = Application(master=root)
+app.mainloop()
